@@ -1,12 +1,13 @@
 #include "../dependencies/game.h"
 
 /**
- * init - initialises sdl elements
+ * init - initialises sdl elements and player object position
  * @app: object with renderer and window elements
+ * @player: player object
  *
  * Return: initialised sdl elements
  */
-sdl_elements init(sdl_elements app)
+sdl_elements init(sdl_elements app, Object *player)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
@@ -29,7 +30,7 @@ sdl_elements init(sdl_elements app)
 		IMG_Quit();
 		return (app);
 	}
-	app.rend = SDL_CreateRenderer(app.win, -1, SDL_RENDERER_ACCELERATED);
+	app.rend = SDL_CreateRenderer(app.win, -1, 0);
 	if (!app.rend)
 	{
 		printf("Error creating renderer: %s\n", SDL_GetError());
@@ -37,5 +38,7 @@ sdl_elements init(sdl_elements app)
 		IMG_Quit();
 		return (app);
 	}
+	player->x = 100;
+	player->y = 100;
 	return (app);
 }

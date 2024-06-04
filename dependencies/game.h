@@ -43,12 +43,14 @@ typedef struct sdl
 } sdl_elements;
 
 bool inputhandler(sdl_elements *app);
-sdl_elements init(sdl_elements app);
+sdl_elements init(sdl_elements app, Object *player);
 bool draw(sdl_elements *app, Object *player);
 void key_pressed(SDL_KeyboardEvent *event, sdl_elements *app);
 void key_released(SDL_KeyboardEvent *event, sdl_elements *app);
 void collide(sdl_elements *app, Object *player, SDL_bool collision);
 SDL_bool invisiWall(sdl_elements *app, SDL_Rect *gamer,
 		SDL_Rect *b, SDL_Texture **t);
+
+void update_pos(sdl_elements app, Object *player);
 
 #endif
